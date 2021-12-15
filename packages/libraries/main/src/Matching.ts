@@ -23,6 +23,7 @@ class Matching {
     date: dateMatcher,
     dictionary: dictionaryMatcher,
     regex: regexMatcher,
+    // @ts-ignore => TODO resolve this type issue. This is because it is possible to be async
     repeat: repeatMatcher,
     sequence: sequenceMatcher,
     spatial: spatialMatcher,
@@ -60,7 +61,7 @@ class Matching {
     })
     if (promises.length > 0) {
       return new Promise((resolve) => {
-        return Promise.all(promises).then(() => {
+        Promise.all(promises).then(() => {
           resolve(sorted(matches))
         })
       })
